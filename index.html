@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>JS Drum Kit</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="keys">
@@ -45,28 +45,30 @@
         </div>
     </div>
 
-    <audio data-key="65" src="clap.mp3"></audio>
-    <audio data-key="83" src="hat.mp3"></audio>
-    <audio data-key="68" src="kick.mp3"></audio>
-    <audio data-key="70" src="openhat.mp3"></audio>
-    <audio data-key="71" src="boom.mp3"></audio>
-    <audio data-key="72" src="ride.mp3"></audio>
-    <audio data-key="74" src="snare.mp3"></audio>
-    <audio data-key="75" src="tom.mp3"></audio>
-    <audio data-key="76" src="tink.mp3"></audio>
+    
+    <audio data-key="65" src="./audio/clap.mp3" preload="auto"></audio>
+    <audio data-key="83" src="./audio/hat.mp3"preload="auto"></audio >
+    <audio data-key="68" src="./audio/kick.mp3" preload="auto"></audio>
+    <audio data-key="70" src="audio/openhat.mp3" preload="auto"></audio>
+    <audio data-key="71" src="audio/boom.mp3" preload="auto"></audio>
+    <audio data-key="72" src="audio/ride.mp3" preload="auto"></audio>
+    <audio data-key="74" src="audio/snare.mp3" preload="auto"></audio>
+    <audio data-key="75" src="audio/tom.mp3" preload="auto"></audio>
+    <audio data-key="76" src="audio/tink.mp3" preload="auto"></audio>
 
     <script>
         function playSound(e) {
             const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
             const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
-            if (!audio) return; // stop the function from running altogether
-            audio.currentTime = 0; // rewind to the start
+            console.log("audio")
+            if (!audio) return; 
+            audio.currentTime = 0;
             audio.play();
             key.classList.add('playing');
         }
 
         function removeTransition(e) {
-            if (e.propertyName !== 'transform') return; // skip if it's not a transform
+            if (e.propertyName !== 'transform') return;
             this.classList.remove('playing');
         }
 
